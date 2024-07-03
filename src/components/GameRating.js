@@ -21,7 +21,7 @@ function getLabelText(value) {
 }
 
 export default function GameRating() {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(5);
   const [hover, setHover] = React.useState(-1);
 
   return (

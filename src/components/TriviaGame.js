@@ -14,6 +14,7 @@ import ScoreDisplay from "./ScoreDisplay";
 import RoundDisplay from "./RoundDisplay";
 import Rating from "./GameRating";
 import GameRating from "./GameRating";
+import LoadingBar from "./LoadingBar";
 
 export default function TriviaGame({ title }) {
   const [triviaQuestion, setTriviaQuestion] = useState("");
@@ -24,6 +25,7 @@ export default function TriviaGame({ title }) {
   const [feedback, setFeedback] = useState("");
   const [isGameStart, setIsGameStart] = useState(false);
   const [answerButtonActive, setAnswerButtonActive] = useState(true);
+  const [loadBar, setLoadBar] = useState(false);
 
   const [difficulty, setDifficulty] = useState("medium");
   useEffect(() => {
@@ -103,7 +105,6 @@ export default function TriviaGame({ title }) {
       ) : (
         ""
       )}
-
       <SelectDifficulty
         currentDifficulty={difficulty}
         setDifficulty={setDifficulty}
@@ -119,6 +120,8 @@ export default function TriviaGame({ title }) {
           <Typography variant="h6" align="center">
             {feedback} {/* Display feedback */}
           </Typography>
+          {answerButtonActive ? "" : <LoadingBar></LoadingBar>}
+          
         </CardContent>
         <CardActions>
           {isGameStart ? (
