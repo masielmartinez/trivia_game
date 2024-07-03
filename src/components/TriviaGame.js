@@ -15,6 +15,7 @@ import RoundDisplay from "./RoundDisplay";
 import Rating from "./GameRating";
 import GameRating from "./GameRating";
 import LoadingBar from "./LoadingBar";
+import { Box } from "@mui/material";
 
 export default function TriviaGame({ title }) {
   const [triviaQuestion, setTriviaQuestion] = useState("");
@@ -25,7 +26,7 @@ export default function TriviaGame({ title }) {
   const [feedback, setFeedback] = useState("");
   const [isGameStart, setIsGameStart] = useState(false);
   const [answerButtonActive, setAnswerButtonActive] = useState(true);
-  const [loadBar, setLoadBar] = useState(false);
+  //const [loadBar, setLoadBar] = useState(false);
 
   const [difficulty, setDifficulty] = useState("medium");
   useEffect(() => {
@@ -113,7 +114,7 @@ export default function TriviaGame({ title }) {
         <CardHeader
           title={triviaQuestion}
           titleTypographyProps={{ align: "center" }}
-          sx={{ mt: 1 }}
+          sx={{ mt: 1}}
         >{triviaQuestion}</CardHeader>
 
         <CardContent sx={{ pt: 0 }}>
@@ -123,12 +124,14 @@ export default function TriviaGame({ title }) {
           {answerButtonActive ? "" : <LoadingBar></LoadingBar>}
           
         </CardContent>
-        <CardActions>
+        <CardActions style={{justifyContent: "center"}}>
           {isGameStart ? (
             <Stack>
               {allAnswers.map((oneOption) => (
+                <Box textAlign="center">
                 <Button
-                  sx={{ px: 6, mx: "auto" }}
+                
+                  sx={{ px: 6, mx: "auto" , my: .5}}
                   onClick={() => {
                     console.log("I WAS CLICKED");
                     handleAnswerClick(oneOption);
@@ -136,6 +139,7 @@ export default function TriviaGame({ title }) {
                 >
                   {oneOption}
                 </Button>
+                </Box>
               ))}
             </Stack>
           ) : (

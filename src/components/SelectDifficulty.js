@@ -12,7 +12,7 @@ export default function SelectDifficulty({currentDifficulty, setDifficulty}) {
     };
   
     return (
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{ minWidth: 120 , my: 2}}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Select Difficulty</InputLabel>
           <Select

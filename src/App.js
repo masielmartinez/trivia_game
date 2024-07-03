@@ -41,7 +41,7 @@ function App() {
       <CssBaseline />
       <AppBar
         position="static"
-        color="default"
+        color="primary"
         elevation={0}
         sx={{ borderBottom: "1px solid lightgray" }}
       >
