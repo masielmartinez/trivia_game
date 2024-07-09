@@ -15,7 +15,7 @@ import RoundDisplay from "./RoundDisplay";
 import Rating from "./GameRating";
 import GameRating from "./GameRating";
 import LoadingBar from "./LoadingBar";
-import { Box } from "@mui/material";
+import { Box, colors } from "@mui/material";
 
 export default function TriviaGame({ title }) {
   const [triviaQuestion, setTriviaQuestion] = useState("");
@@ -27,8 +27,9 @@ export default function TriviaGame({ title }) {
   const [isGameStart, setIsGameStart] = useState(false);
   const [answerButtonActive, setAnswerButtonActive] = useState(true);
   //const [loadBar, setLoadBar] = useState(false);
-
   const [difficulty, setDifficulty] = useState("medium");
+  const [isClicked, setIsClicked] = useState(false);
+
   useEffect(() => {
     if (questionNumber == 11) {
       setIsGameStart(false)
@@ -37,6 +38,7 @@ export default function TriviaGame({ title }) {
       setScore(0)
     }
   }, [questionNumber]);
+
   function fetchTrivia(difficulty) {
     const myHeaders = new Headers();
     myHeaders.append("Cookie", "PHPSESSID=05e6b8ebadbe85215b6b2287f8ec1148");
@@ -96,7 +98,8 @@ export default function TriviaGame({ title }) {
       setFeedback(""); // Clear feedback
       fetchTrivia(difficulty);
       setAnswerButtonActive(true);
-    }, 6000);
+      setIsClicked(false)
+    }, 5000);
   }
 
   return (
@@ -129,10 +132,11 @@ export default function TriviaGame({ title }) {
             <Stack>
               {allAnswers.map((oneOption) => (
                 <Box textAlign="center">
-                <Button
-                
+                <Button disabled={isClicked}
+                variant="contained"
                   sx={{ px: 6, mx: "auto" , my: .5}}
                   onClick={() => {
+                    setIsClicked(true)
                     console.log("I WAS CLICKED");
                     handleAnswerClick(oneOption);
                   }}

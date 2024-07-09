@@ -52,13 +52,11 @@ function App() {
           <Button
             href="#"
             variant="outlined"
-            sx={{ my: 1, mx: 1.5 }}
+            sx={{ my: 1, mx: 1.5, color: "white" }}
             onClick={handleClick}
           >
             Are you bored yet?
-            
           </Button>
-          
         </Toolbar>
       </AppBar>
       <Container maxWidth="md" sx={{ my: 4 }}>
@@ -89,7 +87,6 @@ function App() {
           alignItems="flex-start"
         >
           <CharacterCard></CharacterCard>
-
         </Grid>
       </Container>
     </div>
